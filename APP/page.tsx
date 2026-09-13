@@ -1,31 +1,27 @@
+import type { Metadata } from "next";
 import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import FeaturedCarousel from "@/components/FeaturedCarousel";
-import DiverseGrid from "@/components/DiverseGrid";
-import ComboSection from "@/components/ComboSection";
-import HighlightSection from "@/components/HighlightSection";
-import Footer from "@/components/Footer";
-import { featuredProducts } from "@/data/products";
-import { buildProductListJsonLd } from "@/lib/json-ld";
 
-export default function Home() {
-  const productListJsonLd = buildProductListJsonLd(featuredProducts);
+export const metadata: Metadata = {
+  title: "Cosméticos",
+  description:
+    "Explore a coleção de Cosméticos da Roque Digital, disponível muito em breve.",
+};
 
+// Página preparada para a Etapa futura de listagem de produtos.
+export default function Page() {
   return (
-    <main className="bg-cacau-darker">
+    <main className="min-h-screen bg-cacau-darker">
       <Header />
-      <Hero />
-      <FeaturedCarousel />
-      <DiverseGrid />
-      <ComboSection />
-      <HighlightSection />
-      <Footer />
-
-      <script
-        type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(productListJsonLd) }}
-      />
+      <div className="mx-auto flex max-w-7xl flex-col items-start justify-center px-6 pt-40 pb-24 lg:px-10">
+        <p className="text-sm text-creme/50">Roque Digital</p>
+        <h1 className="mt-2 font-display text-3xl text-creme lg:text-4xl">
+          Cosméticos
+        </h1>
+        <p className="mt-4 text-creme/60">
+          Esta secção está a ser preparada. Muito em breve, aqui verá a
+          coleção completa de Cosméticos.
+        </p>
+      </div>
     </main>
   );
 }
