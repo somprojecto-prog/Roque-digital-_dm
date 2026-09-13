@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #5a2c0c #170a02;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #170a02;
+}
+
+/* Respeita utilizadores que preferem menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Foco visível e acessível, consistente com a paleta da marca */
+:focus-visible {
+  outline: 2px solid #d9731a;
+  outline-offset: 2px;
+}
+
+/* Scroll horizontal infinito da seção "Produtos em Alta".
+   A faixa é triplicada em JS; animar exatamente 1/3 da largura
+   cria um loop perfeitamente contínuo. */
+.marquee-track {
+  animation: marquee-scroll var(--marquee-duration, 48s) linear infinite;
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-33.3333%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
